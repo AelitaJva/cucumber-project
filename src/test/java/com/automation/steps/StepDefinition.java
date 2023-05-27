@@ -1,10 +1,14 @@
 package com.automation.steps;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
+import java.util.List;
 
 public class StepDefinition {
 
@@ -112,4 +116,68 @@ public class StepDefinition {
         
     }
 
+    @When("user enters user name {string} and password {string}")
+    public void userEntersUserNameAndPassword(String username, String password) {
+        System.out.println("Login with user name " + username);
+        System.out.println("Login with password" + password);
+
+    }
+    @When("user enters username {string} and password {string}")
+    public void userEntersUsernameAndPassword(String username, String password) {
+        System.out.println("Login with user name " + username);
+        System.out.println("Login with password" + password);
+    }
+
+
+    // Passing one row
+//    @And("verify dropdown has following value")
+//    public void verifyDropdownHasFollowingValue(List<String> countries) {
+//
+//        for (String country : countries) {
+//            System.out.println(country);
+//        }
+//    }
+
+    @And("verify dropdown has following value")
+    public void verifyDropdownHasFollowingValue(DataTable dt) {
+        List <String> countries = dt.asList();
+
+        for (String county : countries) {
+            System.out.println(county);
+        }
+    }
+
+    @Then("verify country dropdown displayed on cart page")
+    public void verifyCountryDropdownDisplayedOnCartPage() {
+
+    }
+
+    @When("user clicks on checkout button")
+    public void userClicksOnCheckoutButton() {
+
+    }
+
+    @Then("verify user is on checkout button")
+    public void verifyUserIsOnCheckoutButton() {
+
+    }
+
+    @And("validate following data on checkout page")
+    public void validateFollowingDataOnCheckoutPage(DataTable dt) {
+        List<List<String>> listOfListOfData = dt.asLists();
+
+        for (List<String> packet: listOfListOfData) {
+
+            // all
+//            for (String cookie : packet) {
+//                System.out.print(cookie + " ");
+//            }
+//            System.out.println();
+
+            System.out.print(packet.get(0) + " ");
+            System.out.print(packet.get(1) + " ");
+            System.out.println();
+
+        }
+    }
 }
